@@ -8,12 +8,12 @@ Catatan : proyek ini saya buat untuk tugas sekolah untuk belajar bagaimana cara 
 
 ### Fitur-Fitur Tugas
 Fitur                   Cara Kerja
-- Tambah Tugas          | menulis di kotak, lalu tekan enter atau klik tombol akan menambahkan tugas yang anda ketik.
-- Tandai Selesai        | klik teks, akan ada coretan.
-- Edit                  | klik 2 kali untuk, mengedit tugas.
-- Urutkan/drag & drop   | drag & drop untuk menprioritaskan tugas "yang paling penting taruh di paling atas".
-- Filter                | jikalau ingin melihat yang belum klik Belum selesai, jikalau ingin melihat yang sudah selesai klik yang selesai.
-- Search                | mencari tugas dalam to-do-list.
+- Tambah Tugas          | - menulis di kotak, lalu tekan enter atau klik tombol akan menambahkan tugas yang anda ketik.
+- Tandai Selesai        | - klik teks, akan ada coretan.
+- Edit                  | - klik 2 kali untuk, mengedit tugas.
+- Urutkan/drag & drop   | - drag & drop untuk menprioritaskan tugas "yang paling penting taruh di paling atas".
+- Filter                | - jikalau ingin melihat yang belum klik Belum selesai, jikalau ingin melihat yang sudah selesai klik yang selesai.
+- Search                | - mencari tugas dalam to-do-list.
 
 ### Catatan Cepat
 Dalam Catatan cepat misalkan kalian muncul ide secara tiba tiba, atau ada yang harus diingat secara cepat catatan ini solusinya.
