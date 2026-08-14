@@ -1,8 +1,7 @@
 # DailyBoard
 Website ini dibuat untuk mengatur daftar tugas atau kegiatan yang harus diselesaikan, seperti harian atau mingguan.
 
-Catatan : proyek ini saya buat untuk tugas sekolah untuk belajar bagaimana cara js bekerja dan cara menggunakana js dalam website,
-          maaf jikalau website / proyek ini masih kurang rapih dan tidak berstruktur karena saya masih belajar.
+Catatan : proyek ini saya buat untuk tugas sekolah untuk belajar bagaimana cara js bekerja dan cara menggunakana js dalam website,maaf jikalau website / proyek ini masih kurang rapih dan tidak berstruktur karena saya masih belajar.
 
 ## Fitur Dalam DailyBoard
 
