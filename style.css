@@ -1,0 +1,528 @@
+/* ============================================
+   DailyBoard - Minimalist Design System
+   Clean, functional, no unnecessary fluff
+   ============================================ */
+
+/* ----- Tokens (Light) ----- */
+:root {
+  /* Base */
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --text: #1e1e1e;
+  --text-secondary: #6b7280;
+  
+  /* Borders & Dividers */
+  --border: #e5e7eb;
+  --border-focus: #9ca3af;
+  
+  /* Interactive */
+  --primary: #1e1e1e;
+  --primary-hover: #374151;
+  --primary-text: #ffffff;
+  
+  /* Feedback */
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  
+  /* Spacing */
+  --radius: 6px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06);
+  
+  /* Typography */
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ----- Tokens (Dark) ----- */
+body.dark-mode {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --text: #e5e5e5;
+  --text-secondary: #9ca3af;
+  --border: #2a2a2a;
+  --border-focus: #6b7280;
+  --primary: #e5e5e5;
+  --primary-hover: #ffffff;
+  --primary-text: #111111;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* ----- Reset ----- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ----- Base ----- */
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ----- Header ----- */
+#main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+#main-header h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+#main-header button {
+  background: var(--border);
+  color: var(--text);
+  border: none;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#main-header button:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* ----- Layout ----- */
+#app {
+  flex: 1;
+  max-width: 960px;
+  width: 100%;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.25rem;
+}
+
+#status {
+  grid-column: 1 / -1;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Grid Positioning */
+#app > section:nth-of-type(1) { grid-column: 1; grid-row: 1; }
+#app > section:nth-of-type(2) { grid-column: 1; grid-row: 2; }
+#app > section:nth-of-type(3) { grid-column: 2; grid-row: 1 / 3; }
+
+/* ----- Cards ----- */
+section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  height: fit-content;
+  transition: background 0.2s, border 0.2s;
+}
+
+section h3 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* ----- Form Elements ----- */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  outline: none;
+  transition: border 0.15s;
+  margin-bottom: 0.7rem;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: var(--border-focus);
+}
+
+textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+/* ----- Buttons ----- */
+button {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: var(--primary-text);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+button:hover {
+  background: var(--primary-hover);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* Danger buttons (delete) */
+.btn-hapus,
+#daftar-tugas li button:last-child,
+.catatan-item button:last-child {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+}
+
+.btn-hapus:hover,
+#daftar-tugas li button:last-child:hover,
+.catatan-item button:last-child:hover {
+  background: var(--danger);
+  color: #ffffff;
+  border-color: var(--danger);
+}
+
+/* Filter buttons */
+.filter-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border-radius: 20px;
+  margin-right: 0.3rem;
+  transition: all 0.15s;
+}
+
+.filter-btn:hover {
+  background: var(--border);
+  color: var(--text);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  color: var(--primary-text);
+  border-color: var(--primary);
+}
+
+/* ----- Task & Note Items ----- */
+#daftar-tugas,
+#daftar-catatan {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.75rem;
+}
+
+#daftar-tugas li,
+.catatan-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 0.4rem;
+  font-size: 0.875rem;
+  transition: background 0.15s;
+}
+
+/* Task item - draggable */
+#daftar-tugas li {
+  cursor: grab;
+  user-select: none;
+}
+
+#daftar-tugas li:active {
+  cursor: grabbing;
+}
+
+#daftar-tugas li .task-text {
+  flex: 1;
+  word-break: break-word;
+}
+
+#daftar-tugas li.selesai .task-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+/* Note item */
+.catatan-item {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.catatan-item p {
+  margin: 0;
+  word-break: break-word;
+}
+
+.catatan-item small {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+.catatan-item .note-actions {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+/* ----- Search ----- */
+.search-box {
+  position: relative;
+  margin-bottom: 0.7rem;
+}
+
+.dropdown-hasil {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 3px;
+  max-height: 150px;
+  overflow-y: auto;
+  list-style: none;
+  box-shadow: var(--shadow);
+  z-index: 10;
+}
+
+.dropdown-hasil li {
+  padding: 0.4rem 0.7rem;
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.dropdown-hasil li:hover {
+  background: var(--bg);
+}
+
+.dropdown-hasil li.no-result {
+  color: var(--text-secondary);
+  cursor: default;
+}
+
+/* ----- Widgets ----- */
+blockquote {
+  border-left: 2px solid var(--primary);
+  padding-left: 0.75rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+#info-cuaca {
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.7rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+#info-cuaca .weather-temp {
+  font-weight: 600;
+}
+
+#info-cuaca .weather-desc {
+  color: var(--text-secondary);
+}
+
+/* ----- Footer ----- */
+footer {
+  padding: 1rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-top: auto;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+  #app {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+  
+  #app > section:nth-of-type(3) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  
+  #main-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  #main-header h1 {
+    font-size: 0.9rem;
+  }
+  
+  section {
+    padding: 1rem;
+  }
+  
+  input[type="text"],
+  textarea {
+    font-size: 16px; /* Prevents iOS zoom */
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  #main-header {
+    padding: 0.6rem 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  #main-header h1 {
+    font-size: 0.85rem;
+  }
+  
+  #app {
+    padding: 0 0.75rem;
+    margin: 1rem auto;
+    gap: 0.75rem;
+  }
+  
+  section {
+    padding: 0.85rem;
+  }
+  
+  section h3 {
+    font-size: 0.7rem;
+  }
+  
+  input[type="text"],
+  textarea {
+    font-size: 16px;
+    padding: 0.45rem 0.6rem;
+  }
+  
+  textarea {
+    min-height: 50px;
+  }
+  
+  button {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.7rem;
+    width: 100%;
+    margin-bottom: 0.35rem;
+  }
+  
+  #daftar-tugas li,
+  .catatan-item {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+  }
+  
+  #daftar-tugas li .task-actions {
+    display: flex;
+    width: 100%;
+    gap: 0.3rem;
+  }
+  
+  #daftar-tugas li .task-actions button {
+    flex: 1;
+    margin-bottom: 0;
+  }
+  
+  .catatan-item .note-actions {
+    flex-wrap: wrap;
+  }
+  
+  .catatan-item .note-actions button {
+    flex: 1;
+  }
+  
+  .filter-btn {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+  }
+  
+  .btn-hapus,
+  #daftar-tugas li button:last-child,
+  .catatan-item button:last-child {
+    font-size: 0.7rem;
+  }
+  
+  blockquote {
+    font-size: 0.8rem;
+  }
+  
+  #info-cuaca {
+    font-size: 0.75rem;
+  }
+  
+  footer {
+    font-size: 0.65rem;
+    padding: 0.75rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  section {
+    padding: 0.7rem;
+  }
+  
+  input[type="text"],
+  textarea {
+    font-size: 16px;
+    padding: 0.4rem 0.5rem;
+  }
+  
+  button {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  #daftar-tugas li,
+  .catatan-item {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.5rem;
+  }
+}
