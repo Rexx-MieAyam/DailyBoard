@@ -1,528 +1,593 @@
-/* ============================================
-   DailyBoard - Minimalist Design System
-   Clean, functional, no unnecessary fluff
-   ============================================ */
-
-/* ----- Tokens (Light) ----- */
+/* ========================================
+   ROOT VARIABEL — TEMA HUMAN (HANGAT)
+   ======================================== */
 :root {
-  /* Base */
-  --bg: #f8f9fa;
-  --surface: #ffffff;
-  --text: #1e1e1e;
-  --text-secondary: #6b7280;
-  
-  /* Borders & Dividers */
-  --border: #e5e7eb;
-  --border-focus: #9ca3af;
-  
-  /* Interactive */
-  --primary: #1e1e1e;
-  --primary-hover: #374151;
-  --primary-text: #ffffff;
-  
-  /* Feedback */
-  --danger: #dc2626;
-  --danger-hover: #b91c1c;
-  
-  /* Spacing */
-  --radius: 6px;
-  --shadow: 0 1px 3px rgba(0,0,0,0.06);
-  
-  /* Typography */
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Latar & Permukaan */
+  --bg-body: #f6f2eb;
+  --bg-surface: #ffffff;
+  --bg-input: #fcf9f6;
+  --bg-item: #faf6f0;
+  --bg-dropdown: #ffffff;
+
+  /* Warna Aksen (Terracotta / Hangat) */
+  --accent: #d17b5e;
+  --accent-hover: #b8664a;
+  --accent-light: #e8a68b;
+  --accent-dark: #9e5a42;
+  --accent-bg: #f7ede8;
+  --accent-border: #d17b5e;
+
+  /* Teks */
+  --text-primary: #3d3530;
+  --text-secondary: #5f554a;
+  --text-muted: #9a8b7e;
+  --text-white: #fefcf9;
+  --text-dark: #2b2420;
+
+  /* Tombol Umum */
+  --bg-btn: #f0eae2;
+  --bg-btn-hover: #e8dfd6;
+
+  /* Tombol Hapus */
+  --bg-btn-danger: #f4e4de;
+  --bg-btn-danger-hover: #dbaa9a;
+  --text-btn-danger: #b58373;
+
+  /* Batas & Bayangan */
+  --border-default: #e4dbd0;
+  --border-focus: #d17b5e;
+  --border-focus-shadow: rgba(209, 123, 94, 0.2);
+  --shadow-soft: 0 8px 30px rgba(80, 60, 40, 0.07);
+  --shadow-hover: 0 12px 40px rgba(80, 60, 40, 0.12);
+
+  /* Scrollbar */
+  --bg-scrollbar-track: #f0eae2;
+  --bg-scrollbar-thumb: #d6cbbc;
+  --bg-scrollbar-thumb-hover: #c4b5a3;
 }
 
-/* ----- Tokens (Dark) ----- */
+/* ========================================
+   DARK MODE — TETAP HANGAT & NYAMAN
+   ======================================== */
 body.dark-mode {
-  --bg: #111111;
-  --surface: #1a1a1a;
-  --text: #e5e5e5;
-  --text-secondary: #9ca3af;
-  --border: #2a2a2a;
-  --border-focus: #6b7280;
-  --primary: #e5e5e5;
-  --primary-hover: #ffffff;
-  --primary-text: #111111;
-  --danger: #ef4444;
-  --danger-hover: #dc2626;
-  --shadow: 0 1px 3px rgba(0,0,0,0.3);
+  --bg-body: #1f1b17;
+  --bg-surface: #2c2621;
+  --bg-input: #37302a;
+  --bg-item: #332c26;
+  --bg-dropdown: #2c2621;
+
+  --accent: #d17b5e;
+  --accent-hover: #e08b6e;
+  --accent-light: #d17b5e;
+  --accent-dark: #b8664a;
+  --accent-bg: #3d2f2a;
+  --accent-border: #d17b5e;
+
+  --text-primary: #efe7e0;
+  --text-secondary: #c9bcb2;
+  --text-muted: #95857a;
+  --text-white: #1f1b17;
+  --text-dark: #1f1b17;
+
+  --bg-btn: #3d3530;
+  --bg-btn-hover: #4d433c;
+
+  --bg-btn-danger: #4a322b;
+  --bg-btn-danger-hover: #b58373;
+  --text-btn-danger: #dbaa9a;
+
+  --border-default: #4a3f38;
+  --border-focus: #d17b5e;
+  --border-focus-shadow: rgba(209, 123, 94, 0.25);
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.4);
+
+  --bg-scrollbar-track: #332c26;
+  --bg-scrollbar-thumb: #4a3f38;
+  --bg-scrollbar-thumb-hover: #d17b5e;
 }
 
-/* ----- Reset ----- */
+/* ========================================
+   RESET DASAR
+   ======================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ----- Base ----- */
 body {
-  font-family: var(--font);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.5;
-  min-height: 100vh;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg-body);
+  color: var(--text-primary);
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  transition: background 0.2s, color 0.2s;
+  align-items: center;
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
 }
 
-/* ----- Header ----- */
-#main-header {
+#app {
+  max-width: 780px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ========================================
+   HEADER — RAMAH & RAPI
+   ======================================== */
+header {
+  width: 100%;
+  max-width: 780px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 24px;
+  padding: 1rem 1.8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+}
+header:hover {
+  box-shadow: var(--shadow-hover);
 }
 
-#main-header h1 {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+header h1 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
 }
 
-#main-header button {
-  background: var(--border);
-  color: var(--text);
-  border: none;
-  padding: 0.3rem 0.75rem;
-  border-radius: var(--radius);
+#toggle-tema {
+  background: var(--bg-btn);
+  border: 1px solid var(--border-default);
+  border-radius: 40px;
+  padding: 0.4rem 1.2rem;
   font-size: 0.8rem;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-#main-header button:hover {
-  background: var(--text);
-  color: var(--bg);
-}
-
-/* ----- Layout ----- */
-#app {
-  flex: 1;
-  max-width: 960px;
-  width: 100%;
-  margin: 1.5rem auto;
-  padding: 0 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 1.25rem;
-}
-
-#status {
-  grid-column: 1 / -1;
-  font-size: 0.75rem;
   color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+#toggle-tema:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+  transform: translateY(-1px);
 }
 
-/* Grid Positioning */
-#app > section:nth-of-type(1) { grid-column: 1; grid-row: 1; }
-#app > section:nth-of-type(2) { grid-column: 1; grid-row: 2; }
-#app > section:nth-of-type(3) { grid-column: 2; grid-row: 1 / 3; }
-
-/* ----- Cards ----- */
+/* ========================================
+   SECTION / CARD — LEMBUT & BERVOLUME
+   ======================================== */
 section {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.25rem;
-  box-shadow: var(--shadow);
-  height: fit-content;
-  transition: background 0.2s, border 0.2s;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 24px;
+  padding: 1.5rem 1.8rem;
+  box-shadow: var(--shadow-soft);
+  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+}
+section:hover {
+  box-shadow: var(--shadow-hover);
 }
 
 section h3 {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-secondary);
+  font-size: 1.05rem;
+  font-weight: 500;
   margin-bottom: 1rem;
+  letter-spacing: 0.3px;
+  color: var(--text-secondary);
 }
 
-/* ----- Form Elements ----- */
+/* ========================================
+   INPUT & TEXTAREA — NYAMAN DIISI
+   ======================================== */
 input[type="text"],
 textarea {
   width: 100%;
-  padding: 0.5rem 0.7rem;
-  font-size: 0.875rem;
-  font-family: inherit;
-  color: var(--text);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  padding: 0.7rem 1rem;
+  border: 1.5px solid var(--border-default);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  background: var(--bg-input);
+  color: var(--text-primary);
   outline: none;
-  transition: border 0.15s;
-  margin-bottom: 0.7rem;
+  transition: all 0.25s ease;
+  font-family: inherit;
+  line-height: 1.5;
 }
-
 input[type="text"]:focus,
 textarea:focus {
-  border-color: var(--border-focus);
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 4px var(--border-focus-shadow);
+  transform: scale(1.01);
 }
-
 textarea {
-  min-height: 60px;
+  min-height: 70px;
   resize: vertical;
 }
 
-/* ----- Buttons ----- */
+/* ========================================
+   TOMBOL — HIDUP, LONCAT, DAN LEMBUT
+   ======================================== */
 button {
   font-family: inherit;
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 0.4rem 0.9rem;
-  border: none;
-  border-radius: var(--radius);
-  background: var(--primary);
-  color: var(--primary-text);
+  font-size: 0.9rem;
+  padding: 0.5rem 1.3rem;
+  border: 1px solid var(--border-default);
+  border-radius: 40px;
+  background: var(--bg-btn);
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: background 0.15s;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
-
 button:hover {
-  background: var(--primary-hover);
+  background: var(--bg-btn-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-soft);
 }
-
 button:active {
-  transform: scale(0.97);
+  transform: scale(0.96) translateY(0px);
 }
 
-/* Danger buttons (delete) */
-.btn-hapus,
-#daftar-tugas li button:last-child,
-.catatan-item button:last-child {
-  background: transparent;
-  color: var(--danger);
-  border: 1px solid var(--border);
-  padding: 0.3rem 0.7rem;
-  font-size: 0.75rem;
-}
-
-.btn-hapus:hover,
-#daftar-tugas li button:last-child:hover,
-.catatan-item button:last-child:hover {
-  background: var(--danger);
-  color: #ffffff;
-  border-color: var(--danger);
-}
-
-/* Filter buttons */
-.filter-btn {
-  background: transparent;
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-  padding: 0.2rem 0.6rem;
-  font-size: 0.7rem;
+/* TOMBOL AKSEN (TERRACOTTA) */
+#btn-tambah-tugas,
+#btn-tambah-catatan,
+#refreshKutipanBtn {
+  background: var(--accent);
+  color: var(--text-white);
+  border: none;
   font-weight: 500;
-  border-radius: 20px;
-  margin-right: 0.3rem;
-  transition: all 0.15s;
+  box-shadow: 0 4px 12px rgba(209, 123, 94, 0.3);
+}
+#btn-tambah-tugas:hover,
+#btn-tambah-catatan:hover,
+#refreshKutipanBtn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(209, 123, 94, 0.35);
+}
+body.dark-mode #btn-tambah-tugas,
+body.dark-mode #btn-tambah-catatan,
+body.dark-mode #refreshKutipanBtn {
+  background: var(--accent);
+  color: var(--text-white);
+}
+body.dark-mode #btn-tambah-tugas:hover,
+body.dark-mode #btn-tambah-catatan:hover,
+body.dark-mode #refreshKutipanBtn:hover {
+  background: var(--accent-hover);
 }
 
-.filter-btn:hover {
-  background: var(--border);
-  color: var(--text);
+/* TOMBOL HAPUS — MANIS & TIDAK MENYAKITKAN */
+.btn-hapus-catatan,
+.tugas-item button {
+  background: var(--bg-btn-danger);
+  color: var(--text-btn-danger);
+  border: none;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.9rem;
+  border-radius: 40px;
+  font-weight: 500;
+  box-shadow: none;
+}
+.btn-hapus-catatan:hover,
+.tugas-item button:hover {
+  background: var(--bg-btn-danger-hover);
+  color: var(--text-white);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(181, 131, 115, 0.25);
 }
 
-.filter-btn.active {
-  background: var(--primary);
-  color: var(--primary-text);
-  border-color: var(--primary);
-}
-
-/* ----- Task & Note Items ----- */
-#daftar-tugas,
-#daftar-catatan {
+/* ========================================
+   DAFTAR TUGAS — KARTU YANG DAPAT DI-GRAB
+   ======================================== */
+#daftar-tugas {
   list-style: none;
-  padding: 0;
-  margin-top: 0.75rem;
-}
-
-#daftar-tugas li,
-.catatan-item {
+  margin-top: 0.8rem;
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.5rem 0.7rem;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  margin-bottom: 0.4rem;
-  font-size: 0.875rem;
-  transition: background 0.15s;
-}
-
-/* Task item - draggable */
-#daftar-tugas li {
-  cursor: grab;
-  user-select: none;
-}
-
-#daftar-tugas li:active {
-  cursor: grabbing;
-}
-
-#daftar-tugas li .task-text {
-  flex: 1;
-  word-break: break-word;
-}
-
-#daftar-tugas li.selesai .task-text {
-  text-decoration: line-through;
-  color: var(--text-secondary);
-}
-
-/* Note item */
-.catatan-item {
   flex-direction: column;
-  align-items: stretch;
+  gap: 0.6rem;
 }
 
-.catatan-item p {
-  margin: 0;
+.tugas-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1.2rem;
+  background: var(--bg-item);
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  cursor: grab;
+  transition: all 0.25s ease;
+}
+.tugas-item:hover {
+  border-color: var(--accent-border);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-soft);
+}
+.tugas-item span {
+  flex: 1;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0.2rem 0;
   word-break: break-word;
 }
+.tugas-item span[style*="line-through"] {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+.tugas-item button {
+  flex-shrink: 0;
+  margin-left: 0.8rem;
+}
 
+/* ========================================
+   FILTER — SEPERTI CHIP YANG LEMBUT
+   ======================================== */
+#filter-semua,
+#filter-selesai,
+#filter-belum {
+  font-size: 0.8rem;
+  padding: 0.3rem 1rem;
+  border-radius: 40px;
+  background: var(--bg-btn);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  transition: all 0.25s ease;
+}
+#filter-semua:hover,
+#filter-selesai:hover,
+#filter-belum:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+  color: var(--accent-dark);
+  transform: translateY(-2px);
+}
+#filter-semua:active,
+#filter-selesai:active,
+#filter-belum:active {
+  background: var(--accent);
+  color: var(--text-white);
+  border-color: var(--accent);
+  transform: scale(0.95);
+}
+
+/* ========================================
+   CATATAN — SEPERTI STICKY NOTE
+   ======================================== */
+#daftar-catatan {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+}
+
+.catatan-item {
+  background: var(--bg-item);
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  padding: 0.9rem 1.2rem;
+  transition: all 0.25s ease;
+}
+.catatan-item:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+.catatan-item p {
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+  word-break: break-word;
+}
 .catatan-item small {
   font-size: 0.7rem;
-  color: var(--text-secondary);
-  margin-top: 0.25rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 0.4rem;
+}
+.catatan-item .btn-hapus-catatan {
+  margin-top: 0.2rem;
 }
 
-.catatan-item .note-actions {
+/* ========================================
+   KUTIPAN & CUACA — BAGIAN YANG MENENANGKAN
+   ======================================== */
+section:last-of-type {
   display: flex;
-  gap: 0.4rem;
-  margin-top: 0.4rem;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1.5rem;
+}
+#refreshKutipanBtn {
+  order: 2;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
-/* ----- Search ----- */
-.search-box {
-  position: relative;
-  margin-bottom: 0.7rem;
-}
-
-.dropdown-hasil {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  margin-top: 3px;
-  max-height: 150px;
-  overflow-y: auto;
-  list-style: none;
-  box-shadow: var(--shadow);
-  z-index: 10;
-}
-
-.dropdown-hasil li {
-  padding: 0.4rem 0.7rem;
-  font-size: 0.8rem;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-}
-
-.dropdown-hasil li:hover {
-  background: var(--bg);
-}
-
-.dropdown-hasil li.no-result {
-  color: var(--text-secondary);
-  cursor: default;
-}
-
-/* ----- Widgets ----- */
-blockquote {
-  border-left: 2px solid var(--primary);
-  padding-left: 0.75rem;
-  margin-bottom: 1.25rem;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
+#kutipan-harian {
+  order: 1;
+  flex: 1 1 40%;
+  min-width: 200px;
+  margin: 0;
+  padding: 0.9rem 1.2rem;
+  background: var(--bg-item);
+  border-left: 4px solid var(--accent-border);
+  border-radius: 12px;
   font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+#kutipan-harian:hover {
+  border-left-width: 8px;
+}
+
+.search-box {
+  order: 3;
+  flex: 1 1 40%;
+  min-width: 200px;
+  margin: 0;
+  position: relative;
 }
 
 #info-cuaca {
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  background: var(--bg-item);
+  border-radius: 12px;
   margin-top: 0.5rem;
-  padding: 0.6rem 0.7rem;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-size: 0.8rem;
-  color: var(--text);
-}
-
-#info-cuaca .weather-temp {
-  font-weight: 600;
-}
-
-#info-cuaca .weather-desc {
   color: var(--text-secondary);
+  min-height: 2.6rem;
+  border-left: 3px solid var(--accent-border);
+}
+#info-cuaca p {
+  margin: 0.1rem 0;
 }
 
-/* ----- Footer ----- */
-footer {
-  padding: 1rem 1.5rem;
+/* ========================================
+   DROPDOWN PENCARIAN
+   ======================================== */
+.dropdown-hasil {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--bg-dropdown);
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  box-shadow: var(--shadow-hover);
+  list-style: none;
+  padding: 0.4rem 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  display: none;
+}
+.dropdown-hasil li {
+  padding: 0.4rem 1.2rem;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  transition: background 0.15s;
+  border-radius: 8px;
+  margin: 0 4px;
+}
+.dropdown-hasil li:hover {
+  background: var(--accent-bg);
+}
+.dropdown-hasil .no-result {
+  color: var(--text-muted);
+  font-style: italic;
   text-align: center;
-  border-top: 1px solid var(--border);
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  margin-top: auto;
 }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-
-/* Tablet */
-@media (max-width: 768px) {
-  #app {
-    grid-template-columns: 1fr;
-    padding: 0 1rem;
-    gap: 1rem;
-  }
-  
-  #app > section:nth-of-type(3) {
-    grid-column: 1;
-    grid-row: auto;
-  }
-  
-  #main-header {
-    padding: 0.75rem 1rem;
-  }
-  
-  #main-header h1 {
-    font-size: 0.9rem;
-  }
-  
-  section {
-    padding: 1rem;
-  }
-  
-  input[type="text"],
-  textarea {
-    font-size: 16px; /* Prevents iOS zoom */
-  }
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+  max-width: 780px;
+  width: 100%;
+  margin-top: 2.5rem;
+  padding: 1.2rem 0 0.3rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-default);
 }
 
-/* Mobile */
-@media (max-width: 480px) {
-  #main-header {
-    padding: 0.6rem 0.75rem;
+/* ========================================
+   SCROLLBAR KUSTOM
+   ======================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-scrollbar-track);
+  border-radius: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-scrollbar-thumb);
+  border-radius: 12px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-scrollbar-thumb-hover);
+}
+
+/* ========================================
+   RESPONSIVE — TETAP HUMAN DI HP
+   ======================================== */
+@media (max-width: 640px) {
+  body {
+    padding: 0.8rem;
+  }
+  header {
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.6rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 20px;
   }
-  
-  #main-header h1 {
-    font-size: 0.85rem;
+  header h1 {
+    font-size: 1.3rem;
   }
-  
-  #app {
-    padding: 0 0.75rem;
-    margin: 1rem auto;
-    gap: 0.75rem;
-  }
-  
   section {
-    padding: 0.85rem;
+    padding: 1.2rem 1rem;
+    border-radius: 20px;
   }
-  
-  section h3 {
-    font-size: 0.7rem;
+  section:last-of-type {
+    flex-direction: column;
+    align-items: stretch;
   }
-  
-  input[type="text"],
-  textarea {
-    font-size: 16px;
-    padding: 0.45rem 0.6rem;
-  }
-  
-  textarea {
-    min-height: 50px;
-  }
-  
-  button {
-    font-size: 0.75rem;
-    padding: 0.35rem 0.7rem;
+  #refreshKutipanBtn {
+    order: 1;
+    margin-left: 0;
     width: 100%;
-    margin-bottom: 0.35rem;
   }
-  
-  #daftar-tugas li,
-  .catatan-item {
-    padding: 0.45rem 0.6rem;
-    font-size: 0.8rem;
+  #kutipan-harian {
+    order: 2;
+    flex: 1 1 auto;
+  }
+  .search-box {
+    order: 3;
+    flex: 1 1 auto;
+  }
+  .tugas-item {
     flex-wrap: wrap;
+    padding: 0.6rem 1rem;
   }
-  
-  #daftar-tugas li .task-actions {
-    display: flex;
+  .tugas-item span {
     width: 100%;
-    gap: 0.3rem;
+    order: 1;
+    margin-bottom: 0.3rem;
   }
-  
-  #daftar-tugas li .task-actions button {
-    flex: 1;
-    margin-bottom: 0;
+  .tugas-item button {
+    order: 2;
+    margin-left: auto;
   }
-  
-  .catatan-item .note-actions {
-    flex-wrap: wrap;
+  #btn-tambah-tugas,
+  #btn-tambah-catatan,
+  #refreshKutipanBtn {
+    width: 100%;
+    justify-content: center;
   }
-  
-  .catatan-item .note-actions button {
-    flex: 1;
-  }
-  
-  .filter-btn {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.5rem;
-  }
-  
-  .btn-hapus,
-  #daftar-tugas li button:last-child,
-  .catatan-item button:last-child {
-    font-size: 0.7rem;
-  }
-  
-  blockquote {
-    font-size: 0.8rem;
-  }
-  
-  #info-cuaca {
-    font-size: 0.75rem;
-  }
-  
-  footer {
-    font-size: 0.65rem;
-    padding: 0.75rem;
+  .dropdown-hasil {
+    max-height: 140px;
   }
 }
 
-/* Small phones */
-@media (max-width: 360px) {
-  section {
-    padding: 0.7rem;
+@media (max-width: 400px) {
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
   }
-  
-  input[type="text"],
-  textarea {
-    font-size: 16px;
-    padding: 0.4rem 0.5rem;
-  }
-  
-  button {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.6rem;
-  }
-  
-  #daftar-tugas li,
-  .catatan-item {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.5rem;
+  #toggle-tema {
+    justify-content: center;
   }
 }

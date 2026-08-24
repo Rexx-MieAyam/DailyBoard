@@ -4,6 +4,7 @@ import { tambahTugas, hapusTugas, toggleSelesai, editTugas, renderTugas } from "
 import { tambahCatatan, hapusCatatan, editCatatan, renderCatatan } from "./js/catatan.js";
 import { ambilKutipan, ambilCuaca } from "./js/api.js";
 
+
 // Minggu 4 & Minggu 7
 let daftarTugas = muatDariStorage("daftarTugas");
 let daftarCatatan = muatDariStorage("daftarCatatan");
@@ -16,7 +17,6 @@ const header = document.getElementById("main-header");
 
 const statusEl = document.createElement("p");
 statusEl.id = "status";
-statusEl.textContent = "Memuat data...";
 
 const secTugas = document.createElement("section");
 secTugas.innerHTML = `
@@ -49,7 +49,9 @@ secCatatan.innerHTML = `
 const secWidget = document.createElement("section");
 secWidget.innerHTML = `
   <h3>Widget</h3>
+  <button id="refreshKutipanBtn">↻</button>
   <blockquote id="kutipan-harian">Memuat kutipan...</blockquote>
+  
   <div class="search-box">
     <input type="text" id="input-kota" placeholder="Cari kota..." autocomplete="off">
     <div id="info-cuaca"></div>
@@ -61,7 +63,7 @@ toggleTema.id = "toggle-tema";
 toggleTema.textContent = "Dark Mode";
 header.appendChild(toggleTema);
 
-app.append(statusEl, secTugas, secCatatan, secWidget);
+app.append(secTugas, secCatatan, secWidget);
 
 // Pemilihan DOM
 const listTugasEl = document.getElementById("daftar-tugas");
@@ -72,6 +74,7 @@ const inputCariTugas = document.getElementById("cari-tugas");
 const dropdownTugas = document.getElementById("hasil-cari-tugas");
 const inputKota = document.getElementById("input-kota");
 const infoCuaca = document.getElementById("info-cuaca");
+const refreshKutipanBtn = document.getElementById("refreshKutipanBtn");
 
 // Minggu 9 & 16 - Helper & Validasi 
 function debounce(fn, delay = 300) {
@@ -87,8 +90,8 @@ function validasiInput(nilai) {
     alert("Input tidak boleh kosong!");
     return false;
   }
-  if (nilai.length > 100) {
-    alert("Input maksimal 100 karakter!");
+  if (nilai.length > 93) {
+    alert("Input maksimal 93 karakter!");
     return false;
   }
   return true;
@@ -207,6 +210,13 @@ toggleTema.addEventListener("click", () => {
   localStorage.setItem("tema", modeAktif ? "gelap" : "terang");
 });
 
+refreshKutipanBtn.addEventListener("click", async () => {
+  const kutipanEl = document.getElementById("kutipan-harian")
+  kutipanEl.textContent = "Memuat kutipan...";
+  const kutipan = await ambilKutipan()
+  kutipanEl.textContent = kutipan;
+});
+
 // Minggu 12 & Minggu 14
 window.addEventListener("DOMContentLoaded", async () => {
   if (localStorage.getItem("tema") === "gelap") {
@@ -223,5 +233,5 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   document.getElementById("kutipan-harian").textContent = kutipan;
   infoCuaca.innerHTML = cuaca;
-  statusEl.textContent = "Data berhasil dimuat";
+
 });
