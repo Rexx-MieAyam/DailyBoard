@@ -90,8 +90,8 @@ function validasiInput(nilai) {
     alert("Input tidak boleh kosong!");
     return false;
   }
-  if (nilai.length > 93) {
-    alert("Input maksimal 93 karakter!");
+  if (nilai.length > 70) {
+    alert("Input maksimal 70 karakter!");
     return false;
   }
   return true;

@@ -1,95 +1,63 @@
-/* ========================================
-   ROOT VARIABEL — TEMA HUMAN (HANGAT)
-   ======================================== */
 :root {
-  /* Latar & Permukaan */
   --bg-body: #f6f2eb;
   --bg-surface: #ffffff;
   --bg-input: #fcf9f6;
   --bg-item: #faf6f0;
   --bg-dropdown: #ffffff;
-
-  /* Warna Aksen (Terracotta / Hangat) */
   --accent: #d17b5e;
   --accent-hover: #b8664a;
   --accent-light: #e8a68b;
   --accent-dark: #9e5a42;
   --accent-bg: #f7ede8;
   --accent-border: #d17b5e;
-
-  /* Teks */
   --text-primary: #3d3530;
   --text-secondary: #5f554a;
   --text-muted: #9a8b7e;
   --text-white: #fefcf9;
   --text-dark: #2b2420;
-
-  /* Tombol Umum */
   --bg-btn: #f0eae2;
   --bg-btn-hover: #e8dfd6;
-
-  /* Tombol Hapus */
   --bg-btn-danger: #f4e4de;
   --bg-btn-danger-hover: #dbaa9a;
   --text-btn-danger: #b58373;
-
-  /* Batas & Bayangan */
   --border-default: #e4dbd0;
   --border-focus: #d17b5e;
   --border-focus-shadow: rgba(209, 123, 94, 0.2);
   --shadow-soft: 0 8px 30px rgba(80, 60, 40, 0.07);
   --shadow-hover: 0 12px 40px rgba(80, 60, 40, 0.12);
-
-  /* Scrollbar */
   --bg-scrollbar-track: #f0eae2;
   --bg-scrollbar-thumb: #d6cbbc;
   --bg-scrollbar-thumb-hover: #c4b5a3;
 }
 
-/* ========================================
-   DARK MODE — TETAP HANGAT & NYAMAN
-   ======================================== */
 body.dark-mode {
   --bg-body: #1f1b17;
   --bg-surface: #2c2621;
   --bg-input: #37302a;
   --bg-item: #332c26;
   --bg-dropdown: #2c2621;
-
-  --accent: #d17b5e;
   --accent-hover: #e08b6e;
-  --accent-light: #d17b5e;
   --accent-dark: #b8664a;
   --accent-bg: #3d2f2a;
-  --accent-border: #d17b5e;
-
   --text-primary: #efe7e0;
   --text-secondary: #c9bcb2;
   --text-muted: #95857a;
   --text-white: #1f1b17;
   --text-dark: #1f1b17;
-
   --bg-btn: #3d3530;
   --bg-btn-hover: #4d433c;
-
   --bg-btn-danger: #4a322b;
   --bg-btn-danger-hover: #b58373;
   --text-btn-danger: #dbaa9a;
-
   --border-default: #4a3f38;
-  --border-focus: #d17b5e;
   --border-focus-shadow: rgba(209, 123, 94, 0.25);
   --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.3);
   --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.4);
-
   --bg-scrollbar-track: #332c26;
   --bg-scrollbar-thumb: #4a3f38;
   --bg-scrollbar-thumb-hover: #d17b5e;
 }
 
-/* ========================================
-   RESET DASAR
-   ======================================== */
 * {
   margin: 0;
   padding: 0;
@@ -105,7 +73,7 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s, color 0.3s;
   line-height: 1.6;
 }
 
@@ -117,23 +85,26 @@ body {
   gap: 1.5rem;
 }
 
-/* ========================================
-   HEADER — RAMAH & RAPI
-   ======================================== */
-header {
-  width: 100%;
-  max-width: 780px;
+header,
+section {
   background: var(--bg-surface);
   border: 1px solid var(--border-default);
   border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+}
+
+header {
+  max-width: 780px;
+  width: 100%;
   padding: 1rem 1.8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: var(--shadow-soft);
-  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
 }
-header:hover {
+
+header:hover,
+section:hover {
   box-shadow: var(--shadow-hover);
 }
 
@@ -154,25 +125,15 @@ header h1 {
   cursor: pointer;
   transition: all 0.25s ease;
 }
+
 #toggle-tema:hover {
   border-color: var(--accent-border);
   background: var(--accent-bg);
   transform: translateY(-1px);
 }
 
-/* ========================================
-   SECTION / CARD — LEMBUT & BERVOLUME
-   ======================================== */
 section {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-default);
-  border-radius: 24px;
   padding: 1.5rem 1.8rem;
-  box-shadow: var(--shadow-soft);
-  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
-}
-section:hover {
-  box-shadow: var(--shadow-hover);
 }
 
 section h3 {
@@ -183,9 +144,6 @@ section h3 {
   color: var(--text-secondary);
 }
 
-/* ========================================
-   INPUT & TEXTAREA — NYAMAN DIISI
-   ======================================== */
 input[type="text"],
 textarea {
   width: 100%;
@@ -200,20 +158,19 @@ textarea {
   font-family: inherit;
   line-height: 1.5;
 }
+
 input[type="text"]:focus,
 textarea:focus {
   border-color: var(--accent-border);
   box-shadow: 0 0 0 4px var(--border-focus-shadow);
   transform: scale(1.01);
 }
+
 textarea {
   min-height: 70px;
   resize: vertical;
 }
 
-/* ========================================
-   TOMBOL — HIDUP, LONCAT, DAN LEMBUT
-   ======================================== */
 button {
   font-family: inherit;
   font-size: 0.9rem;
@@ -226,16 +183,17 @@ button {
   transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
+
 button:hover {
   background: var(--bg-btn-hover);
   transform: translateY(-2px) scale(1.02);
   box-shadow: var(--shadow-soft);
 }
+
 button:active {
-  transform: scale(0.96) translateY(0px);
+  transform: scale(0.96) translateY(0);
 }
 
-/* TOMBOL AKSEN (TERRACOTTA) */
 #btn-tambah-tugas,
 #btn-tambah-catatan,
 #refreshKutipanBtn {
@@ -245,6 +203,7 @@ button:active {
   font-weight: 500;
   box-shadow: 0 4px 12px rgba(209, 123, 94, 0.3);
 }
+
 #btn-tambah-tugas:hover,
 #btn-tambah-catatan:hover,
 #refreshKutipanBtn:hover {
@@ -252,19 +211,20 @@ button:active {
   transform: translateY(-3px) scale(1.03);
   box-shadow: 0 8px 20px rgba(209, 123, 94, 0.35);
 }
+
 body.dark-mode #btn-tambah-tugas,
 body.dark-mode #btn-tambah-catatan,
 body.dark-mode #refreshKutipanBtn {
   background: var(--accent);
   color: var(--text-white);
 }
+
 body.dark-mode #btn-tambah-tugas:hover,
 body.dark-mode #btn-tambah-catatan:hover,
 body.dark-mode #refreshKutipanBtn:hover {
   background: var(--accent-hover);
 }
 
-/* TOMBOL HAPUS — MANIS & TIDAK MENYAKITKAN */
 .btn-hapus-catatan,
 .tugas-item button {
   background: var(--bg-btn-danger);
@@ -276,6 +236,7 @@ body.dark-mode #refreshKutipanBtn:hover {
   font-weight: 500;
   box-shadow: none;
 }
+
 .btn-hapus-catatan:hover,
 .tugas-item button:hover {
   background: var(--bg-btn-danger-hover);
@@ -284,9 +245,6 @@ body.dark-mode #refreshKutipanBtn:hover {
   box-shadow: 0 4px 12px rgba(181, 131, 115, 0.25);
 }
 
-/* ========================================
-   DAFTAR TUGAS — KARTU YANG DAPAT DI-GRAB
-   ======================================== */
 #daftar-tugas {
   list-style: none;
   margin-top: 0.8rem;
@@ -306,11 +264,13 @@ body.dark-mode #refreshKutipanBtn:hover {
   cursor: grab;
   transition: all 0.25s ease;
 }
+
 .tugas-item:hover {
   border-color: var(--accent-border);
   transform: translateX(4px);
   box-shadow: var(--shadow-soft);
 }
+
 .tugas-item span {
   flex: 1;
   font-size: 0.95rem;
@@ -318,18 +278,17 @@ body.dark-mode #refreshKutipanBtn:hover {
   padding: 0.2rem 0;
   word-break: break-word;
 }
+
 .tugas-item span[style*="line-through"] {
   color: var(--text-muted);
   text-decoration: line-through;
 }
+
 .tugas-item button {
   flex-shrink: 0;
   margin-left: 0.8rem;
 }
 
-/* ========================================
-   FILTER — SEPERTI CHIP YANG LEMBUT
-   ======================================== */
 #filter-semua,
 #filter-selesai,
 #filter-belum {
@@ -341,6 +300,7 @@ body.dark-mode #refreshKutipanBtn:hover {
   color: var(--text-secondary);
   transition: all 0.25s ease;
 }
+
 #filter-semua:hover,
 #filter-selesai:hover,
 #filter-belum:hover {
@@ -349,6 +309,7 @@ body.dark-mode #refreshKutipanBtn:hover {
   color: var(--accent-dark);
   transform: translateY(-2px);
 }
+
 #filter-semua:active,
 #filter-selesai:active,
 #filter-belum:active {
@@ -358,9 +319,6 @@ body.dark-mode #refreshKutipanBtn:hover {
   transform: scale(0.95);
 }
 
-/* ========================================
-   CATATAN — SEPERTI STICKY NOTE
-   ======================================== */
 #daftar-catatan {
   display: flex;
   flex-direction: column;
@@ -375,35 +333,37 @@ body.dark-mode #refreshKutipanBtn:hover {
   padding: 0.9rem 1.2rem;
   transition: all 0.25s ease;
 }
+
 .catatan-item:hover {
   border-color: var(--accent-border);
   transform: translateY(-2px);
   box-shadow: var(--shadow-soft);
 }
+
 .catatan-item p {
   font-size: 0.95rem;
   margin-bottom: 0.2rem;
   word-break: break-word;
 }
+
 .catatan-item small {
   font-size: 0.7rem;
   color: var(--text-muted);
   display: inline-block;
   margin-bottom: 0.4rem;
 }
+
 .catatan-item .btn-hapus-catatan {
   margin-top: 0.2rem;
 }
 
-/* ========================================
-   KUTIPAN & CUACA — BAGIAN YANG MENENANGKAN
-   ======================================== */
 section:last-of-type {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.8rem 1.5rem;
 }
+
 #refreshKutipanBtn {
   order: 2;
   margin-left: auto;
@@ -424,6 +384,7 @@ section:last-of-type {
   color: var(--text-secondary);
   transition: all 0.3s ease;
 }
+
 #kutipan-harian:hover {
   border-left-width: 8px;
 }
@@ -446,13 +407,11 @@ section:last-of-type {
   min-height: 2.6rem;
   border-left: 3px solid var(--accent-border);
 }
+
 #info-cuaca p {
   margin: 0.1rem 0;
 }
 
-/* ========================================
-   DROPDOWN PENCARIAN
-   ======================================== */
 .dropdown-hasil {
   position: absolute;
   top: calc(100% + 6px);
@@ -470,6 +429,7 @@ section:last-of-type {
   z-index: 10;
   display: none;
 }
+
 .dropdown-hasil li {
   padding: 0.4rem 1.2rem;
   font-size: 0.9rem;
@@ -478,18 +438,17 @@ section:last-of-type {
   border-radius: 8px;
   margin: 0 4px;
 }
+
 .dropdown-hasil li:hover {
   background: var(--accent-bg);
 }
+
 .dropdown-hasil .no-result {
   color: var(--text-muted);
   font-style: italic;
   text-align: center;
 }
 
-/* ========================================
-   FOOTER
-   ======================================== */
 footer {
   max-width: 780px;
   width: 100%;
